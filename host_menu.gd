@@ -1,5 +1,6 @@
 extends Control
 
+var game_prefab = preload("res://game.tscn")
 @onready var button_host: Button = %ButtonHost
 @onready var ip: LineEdit = %IP
 @onready var port: LineEdit = %Port
@@ -20,14 +21,15 @@ func _ready():
             button_host.self_modulate = Color.GREEN
             button_host.text = "Start Game"
             button_host.disabled = false
+            start_game.rpc()
         )
     )
     
     var addrs = IP.get_local_addresses()
-    ip.text = addrs[1]
+    ip.text = addrs[0]
     port.text = str(PORT)
-    
-    
-
-func _process(delta):
-    pass
+       
+@rpc("call_local", "authority")
+func start_game():
+    Globals.multiplayer_peer = multiplayer_peer
+    get_tree().change_scene_to_packed(game_prefab)
