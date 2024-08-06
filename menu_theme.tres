@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c0hqrg8kwi7ps"]
+
+[ext_resource type="FontFile" uid="uid://p42yca6ye8pg" path="res://fonts/fffforwad.ttf" id="1_t30o2"]
+
+[resource]
+default_font = ExtResource("1_t30o2")
+default_font_size = 100
+LineEdit/font_sizes/font_size = 60

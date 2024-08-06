@@ -1,0 +1,44 @@
+
+    
+func _ready():
+    multiplayer_peer = ENetMultiplayerPeer.new()
+    button_1.pressed.connect(func():
+        var err = multiplayer_peer.create_server(PORT)
+        debug.text += "\ncreate server: " + str(err)
+        multiplayer.multiplayer_peer = multiplayer_peer
+        multiplayer_peer.peer_connected.connect(func(id):
+            print("Connected: " + str(id))
+            #rpc("setup_client")
+            pass
+        )
+        menu.visible = false
+        ui.visible = true
+        button_on.visible = true
+        label.visible = false
+    )
+    button_2.pressed.connect(func():
+        multiplayer.connection_failed.connect(func():
+            debug.text += "\nconnection failed"
+        )
+        ui.visible = false
+        var err = multiplayer_peer.create_client(ADDRESS, PORT)
+        debug.text += "\ncreate client: " + str(err)
+        multiplayer.multiplayer_peer = multiplayer_peer
+        menu.visible = false
+        ui.visible = true
+        button_on.visible = false
+        label.visible = true
+    )
+@rpc    
+func setup_client():
+    ui.visible = true
+    button_on.visible = false
+    label.visible = true
+
+func _physics_process(delta):
+    #debug.text = str(multiplayer_peer.get_connection_status())
+    if vibrating:
+        Input.vibrate_handheld(200)
+        await get_tree().create_timer(0.2).timeout
+        print(multiplayer.get_unique_id())
+        
