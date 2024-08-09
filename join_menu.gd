@@ -17,13 +17,21 @@ func _ready():
     #get_tree().paused = true
     button_join.pressed.connect(on_join_pressed) 
     button_host.pressed.connect(on_host_pressed) 
+    lobby.game_ready.connect(start_game)
     ip.text_changed.connect(on_ip_text_changed)
     ip.text = IP.get_local_addresses()[1]
 
-func start_game():
+func wait_in_lobby():
     network.hide()
     lobby.show()
-    #get_tree().paused = false
+
+func start_game():
+    if multiplayer.is_server():
+        enter_game.rpc()
+    
+@rpc("authority", "call_local", "reliable") 
+func enter_game():
+    hide()
 
 func on_peer_connected(id):
     # For some reason, the delay is necessary or doesn't work as expected
@@ -31,6 +39,7 @@ func on_peer_connected(id):
     set_host_nickname.rpc_id(id, nickname.text)
     
 func on_host_pressed():
+  
     if not ip.text.is_valid_ip_address():
         error_overlay.show_error("Invalid IP address")
         return
@@ -40,9 +49,10 @@ func on_host_pressed():
         error_overlay.show_error("Failed to start multiplayer server")
         return
     peer.peer_connected.connect(on_peer_connected)
+
     multiplayer.multiplayer_peer = peer
     lobby.set_player_one(nickname.text)
-    start_game()
+    wait_in_lobby()
 
 func on_join_pressed():
     if not ip.text.is_valid_ip_address():
@@ -56,7 +66,7 @@ func on_join_pressed():
     print_debug(peer.get_unique_id())
     multiplayer.multiplayer_peer = peer
     lobby.set_player_two(nickname.text)
-    start_game()
+    wait_in_lobby()
 
 
 @rpc("authority", "call_remote", "reliable")
