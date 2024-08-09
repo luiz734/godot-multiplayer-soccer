@@ -9,15 +9,17 @@ properties/0/spawn = true
 properties/0/replication_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_55pjf"]
-radius = 74.0068
+radius = 146.086
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 2
 script = ExtResource("2_7i4p6")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vkb4r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = ExtResource("1_2mmo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

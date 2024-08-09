@@ -63,6 +63,12 @@ left={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Puck"
+2d_physics/layer_3="Wall"
+
 [rendering]
 
 renderer/rendering_method="mobile"
