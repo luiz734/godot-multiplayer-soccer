@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmdgeqsvqgd1"]
+[gd_scene load_steps=3 format=3 uid="uid://cmdgeqsvqgd1"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_mrbiw"]
+[ext_resource type="Texture2D" uid="uid://djj3k7ryov4hn" path="res://icon.svg" id="2_h348t"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_mrbiw")
+
+[node name="Player1" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(304, 211)
+texture = ExtResource("2_h348t")
+
+[node name="Player2" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(304, 211)
+texture = ExtResource("2_h348t")

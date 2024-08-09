@@ -5,3 +5,5 @@ func _process(_delta):
         get_tree().quit(0)
 
 var multiplayer_peer
+var player1_id
+var player2_id

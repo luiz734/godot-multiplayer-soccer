@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://du2xnwwps1gya"]
+
+[ext_resource type="Script" path="res://error_overlay.gd" id="1_v5v4f"]
+[ext_resource type="Theme" uid="uid://c0hqrg8kwi7ps" path="res://menu_theme.tres" id="1_yygfq"]
+
+[node name="ErrorOverlay" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yygfq")
+color = Color(0, 0, 0, 0.788235)
+script = ExtResource("1_v5v4f")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="CenterContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/CenterContainer"]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 2
+
+[node name="ErrorMessage" type="Label" parent="MarginContainer/CenterContainer/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0862745, 0.0431373, 0.117647, 1)
+text = "Error doing stuff"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

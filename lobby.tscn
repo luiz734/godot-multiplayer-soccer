@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://j2jw4a50kapn"]
+
+[ext_resource type="Theme" uid="uid://c0hqrg8kwi7ps" path="res://menu_theme.tres" id="1_2e2bs"]
+[ext_resource type="Script" path="res://lobby.gd" id="1_ypfqu"]
+
+[node name="Lobby" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2e2bs")
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+script = ExtResource("1_ypfqu")
+
+[node name="UIComponents" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Label" type="Label" parent="UIComponents"]
+layout_mode = 2
+text = "GET READY!"
+horizontal_alignment = 1
+
+[node name="PlayerList" type="VBoxContainer" parent="UIComponents"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="PlayerOne" type="Label" parent="UIComponents/PlayerList"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "waiting..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UIComponents/PlayerList"]
+layout_mode = 2
+text = "VS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerTwo" type="Label" parent="UIComponents/PlayerList"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "waiting..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5

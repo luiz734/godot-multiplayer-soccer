@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@onready var menu_network_prefab: PackedScene = load("res://network_menu.tscn")
+@onready var menu_network_prefab: PackedScene = load("res://join_menu.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

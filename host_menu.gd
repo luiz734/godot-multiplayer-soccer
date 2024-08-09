@@ -21,6 +21,8 @@ func _ready():
             button_host.self_modulate = Color.GREEN
             button_host.text = "Start Game"
             button_host.disabled = false
+            Globals.player1_id = multiplayer_peer.get_unique_id()
+            Globals.player2_id = id
             start_game.rpc()
         )
     )
