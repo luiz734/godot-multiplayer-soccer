@@ -31,8 +31,9 @@ func start_game():
     
 @rpc("authority", "call_local", "reliable") 
 func enter_game():
-    await get_tree().create_timer(2.0).timeout
+    #await get_tree().create_timer(2.0).timeout
     hide()
+    get_tree().root.add_child(game_prefab.instantiate())
 
 func on_connect_to_server():
     # Sends info only to host

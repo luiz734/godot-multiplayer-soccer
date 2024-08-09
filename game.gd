@@ -1,21 +1,37 @@
 extends Node2D
 
-@onready var player1 = %Player1
-@onready var player2 = %Player2
-
+@onready var spawn_pos_1 = %Pos1
+@onready var spawn_pos_2 = %Pos2
+@onready var puck_pos = %PuckPos
+@onready var player_prefab: PackedScene = preload("res://player.tscn")
+@onready var hockey_puck_prefab: PackedScene = preload("res://hockey_puck.tscn")
 @onready var win_size = get_window().size
-# Called when the node enters the scene tree for the first time.
+
+var players = []
+
 func _ready():
-    pass # Replace with function body.
-    #print(multiplayer.multiplayer_peer)
-    player1.self_modulate = Color(randf(), randf(), randf())
+    for pid in Globals.players:
+        var new_player = player_prefab.instantiate()
+        players.push_back(new_player)
+        setup_player(new_player, pid)
+        new_player.self_modulate = Color(randf(), randf(), randf())
+        add_child(new_player)
+    
+    var puck = hockey_puck_prefab.instantiate()
+    puck.position = puck_pos.position
+    add_child(puck)    
+ 
+ 
+func setup_player(player: Node2D, player_id: int):
+    player.name = str(player_id)
+    if player_id == 1:
+        player.position = spawn_pos_1.position
+        player.modulate = Color.BLUE
+    else:
+        player.position = spawn_pos_2.position
+        player.modulate = Color.RED
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    if not is_multiplayer_authority():
-        return
-    var mouse_pos = get_global_mouse_position()
-    if mouse_pos.x > win_size.x or mouse_pos.x < 0 or mouse_pos.y > win_size.y or mouse_pos.y < 0:
-        return
-    player2.position = mouse_pos
+    pass
