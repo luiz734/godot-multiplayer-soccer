@@ -9,14 +9,21 @@ extends Node2D
 @onready var score_manager: ScoreManager = %ScoreManager
 
 var players = []
-var puck
+var puck: HockeyPuck
 
 func _ready():
     randomize()
+
     score_manager.score.connect(func():
-        puck.position = puck_pos.position
-        puck.reset()
+        # After finished, returns the signal animation_finished bellow
+        # Use a wrapper because it's not possible call a rpc function here
+        animate_goal_wrapper()
     )
+    score_manager.animation_finished.connect(func():
+        puck.position = puck_pos.position
+        puck.reset.rpc(puck_pos)
+    )
+    
     for pid in Globals.players:
         var new_player = player_prefab.instantiate()
         players.push_back(new_player)
@@ -28,7 +35,7 @@ func _ready():
     puck.position = puck_pos.position
     add_child(puck)    
  
- 
+@rpc("authority", "call_local", "reliable") 
 func setup_player(player: Node2D, player_id: int):
     player.name = str(player_id)
     if player_id == 1:
@@ -38,7 +45,11 @@ func setup_player(player: Node2D, player_id: int):
         player.position = spawn_pos_2.position
         player.modulate = Color.RED
 
+func animate_goal_wrapper():
+    animate_goal.rpc()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    pass
+@rpc("authority", "call_local", "reliable") 
+func animate_goal():
+    score_manager.animate_goal()
+    players[0].position = spawn_pos_1.position
+    players[1].position = spawn_pos_2.position

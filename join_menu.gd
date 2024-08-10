@@ -19,7 +19,7 @@ func _ready():
     button_join.pressed.connect(on_join_pressed) 
     button_host.pressed.connect(on_host_pressed) 
     ip.text_changed.connect(on_ip_text_changed)
-    ip.text = IP.get_local_addresses()[1]
+    #ip.text = IP.get_local_addresses()[1]
 
 func wait_in_lobby():
     network.hide()

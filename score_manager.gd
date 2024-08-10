@@ -4,6 +4,7 @@ class_name ScoreManager
 signal player_one_score
 signal player_two_score
 signal score
+signal animation_finished
 
 @onready var player_one_goal: Area2D = %PlayerOneGoal
 @onready var player_two_goal: Area2D = %PlayerTwoGoal
@@ -16,19 +17,18 @@ var p1_goals: int = 0
 var p2_goals: int = 0
 
 func _ready():
-    player_one_goal.body_entered.connect(on_player_one_score)
-    player_two_goal.body_entered.connect(on_player_two_score)
+    if multiplayer.is_server():
+        player_one_goal.body_entered.connect(on_player_one_score)
+        player_two_goal.body_entered.connect(on_player_two_score)
     #animate_goal()
 
 func on_player_one_score(body):
     p1_goals += 1
-    await animate_goal()
     score.emit()
     print_debug("goal p1")
 
 func on_player_two_score(body):
     p2_goals += 1
-    await animate_goal()
     score.emit()
     print_debug("goal p2")
 
@@ -44,7 +44,4 @@ func animate_goal():
     await tween2.finished
 
     goal_label.position = tween_start_pos.position
-
-    
-func _process(delta):
-    pass
+    animation_finished.emit()

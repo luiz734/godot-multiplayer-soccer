@@ -9,14 +9,9 @@ var sync_position: Vector2
 @onready var multiplayer_sync = $MultiplayerSynchronizer
 
 var peer_id: int = 1
-
-func reset():
-    multiplayer_sync.set_multiplayer_authority(peer_id)
-    velocity = -Vector2(randf(), randf())
-    velocity = velocity.normalized() * IMPULSE_FORCE
     
 func _ready():
-    reset()
+    pass
 
 func _physics_process(delta):
     if not multiplayer_sync.get_multiplayer_authority() == multiplayer.get_unique_id():
@@ -28,6 +23,14 @@ func _physics_process(delta):
         velocity = lerp(velocity, Vector2.ZERO, 0.01)
         sync_position = position
 
+@rpc("authority", "call_local", "reliable")
+func reset(pos):
+    #position = pos
+    multiplayer_sync.set_multiplayer_authority(peer_id)
+    #velocity = -Vector2(randf(), randf())
+    velocity = Vector2.ZERO
+    #velocity = velocity.normalized() * IMPULSE_FORCE
+    
 @rpc("any_peer", "call_local", "unreliable")
 func apply_impulse(dir_norm: Vector2):
     velocity = dir_norm * IMPULSE_FORCE

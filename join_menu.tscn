@@ -51,11 +51,9 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "nick"
 placeholder_text = "nickname"
 alignment = 1
 max_length = 15
-virtual_keyboard_type = 2
 drag_and_drop_selection_enabled = false
 select_all_on_focus = true
 
@@ -68,10 +66,10 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "192.168.0.1"
+text = "127.0.0.1"
+placeholder_text = "127.0.0.1"
 alignment = 1
 max_length = 15
-virtual_keyboard_type = 2
 drag_and_drop_selection_enabled = false
 select_all_on_focus = true
 

@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://baj56k7w8ec1v"]
+
+[ext_resource type="Script" path="res://score_manager.gd" id="1_qtwww"]
+[ext_resource type="FontFile" uid="uid://p42yca6ye8pg" path="res://fonts/fffforwad.ttf" id="2_abj01"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0171"]
+size = Vector2(570, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83p3w"]
+size = Vector2(570, 200)
+
+[node name="ScoreManager" type="Node2D"]
+script = ExtResource("1_qtwww")
+
+[node name="PlayerOneGoal" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(540, -195)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerOneGoal"]
+position = Vector2(2, 0)
+scale = Vector2(1, 0.994084)
+shape = SubResource("RectangleShape2D_w0171")
+debug_color = Color(0.909298, 0.000110701, 0.733849, 0.42)
+
+[node name="PlayerTwoGoal" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(540, 2125)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerTwoGoal"]
+position = Vector2(2, 0)
+scale = Vector2(1, 0.994084)
+shape = SubResource("RectangleShape2D_83p3w")
+debug_color = Color(0.909298, 0.000110701, 0.733849, 0.42)
+
+[node name="GoalLabel" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 10
+position = Vector2(1464, 980)
+
+[node name="GoalLabel" type="Label" parent="GoalLabel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -103.5
+offset_right = 290.5
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 80
+theme_override_fonts/font = ExtResource("2_abj01")
+theme_override_font_sizes/font_size = 150
+text = "Goal!!!"
+metadata/_edit_lock_ = true
+
+[node name="TweenPosStart" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1494, 960)
+
+[node name="TweenPosMid" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(540, 960)
+
+[node name="TweenPosEnd" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-475, 960)
