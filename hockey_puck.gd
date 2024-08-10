@@ -8,8 +8,10 @@ const IMPULSE_FORCE = 2000.0
 var sync_position: Vector2
 @onready var multiplayer_sync = $MultiplayerSynchronizer
 
+var peer_id: int = 1
+
 func _ready():
-    multiplayer_sync.set_multiplayer_authority(1)
+    multiplayer_sync.set_multiplayer_authority(peer_id)
     velocity = -Vector2(randf(), randf())
     velocity = velocity.normalized() * IMPULSE_FORCE
 
@@ -26,3 +28,8 @@ func _physics_process(delta):
 @rpc("any_peer", "call_local", "unreliable")
 func apply_impulse(dir_norm: Vector2):
     velocity = dir_norm * IMPULSE_FORCE
+
+@rpc("any_peer", "call_local", "unreliable")
+func set_authority(id: int):
+    self.peer_id = id
+    multiplayer_sync.set_multiplayer_authority(peer_id)
