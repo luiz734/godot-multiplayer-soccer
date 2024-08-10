@@ -6,10 +6,17 @@ extends Node2D
 @onready var player_prefab: PackedScene = preload("res://player.tscn")
 @onready var hockey_puck_prefab: PackedScene = preload("res://hockey_puck.tscn")
 @onready var win_size = get_window().size
+@onready var score_manager: ScoreManager = %ScoreManager
 
 var players = []
+var puck
 
 func _ready():
+    randomize()
+    score_manager.score.connect(func():
+        puck.position = puck_pos.position
+        puck.reset()
+    )
     for pid in Globals.players:
         var new_player = player_prefab.instantiate()
         players.push_back(new_player)
@@ -17,7 +24,7 @@ func _ready():
         new_player.self_modulate = Color(randf(), randf(), randf())
         add_child(new_player)
     
-    var puck = hockey_puck_prefab.instantiate()
+    puck = hockey_puck_prefab.instantiate()
     puck.position = puck_pos.position
     add_child(puck)    
  

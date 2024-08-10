@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmdgeqsvqgd1"]
+[gd_scene load_steps=13 format=3 uid="uid://cmdgeqsvqgd1"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_mrbiw"]
 [ext_resource type="Texture2D" uid="uid://ck732lg0rvfm7" path="res://assets/field.png" id="2_bddt1"]
+[ext_resource type="Script" path="res://score_manager.gd" id="3_nf5vr"]
+[ext_resource type="FontFile" uid="uid://p42yca6ye8pg" path="res://fonts/fffforwad.ttf" id="4_gm53h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itqn6"]
 size = Vector2(200, 2000)
@@ -10,7 +12,22 @@ size = Vector2(200, 2000)
 size = Vector2(200, 2000)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6w2p"]
-size = Vector2(1200, 200)
+size = Vector2(600, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_na7gs"]
+size = Vector2(600, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkv4p"]
+size = Vector2(600, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yblq0"]
+size = Vector2(600, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0171"]
+size = Vector2(570, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83p3w"]
+size = Vector2(570, 200)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_mrbiw")
@@ -27,7 +44,7 @@ position = Vector2(540, 1688)
 
 [node name="PuckPos" type="Node2D" parent="SpawnPositions"]
 unique_name_in_owner = true
-position = Vector2(525, 1016)
+position = Vector2(540, 960)
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -49,24 +66,107 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_rmeec")
 metadata/_edit_lock_ = true
 
-[node name="WallTop" type="StaticBody2D" parent="Walls"]
-position = Vector2(540, -100)
+[node name="WallTopLeft" type="StaticBody2D" parent="Walls"]
+position = Vector2(-60, -100)
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTop"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTopLeft"]
 shape = SubResource("RectangleShape2D_j6w2p")
 metadata/_edit_lock_ = true
 
-[node name="WallBottom" type="StaticBody2D" parent="Walls"]
-position = Vector2(540, 2020)
+[node name="WallTopRight" type="StaticBody2D" parent="Walls"]
+position = Vector2(1140, -100)
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom"]
-shape = SubResource("RectangleShape2D_j6w2p")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTopRight"]
+shape = SubResource("RectangleShape2D_na7gs")
+metadata/_edit_lock_ = true
+
+[node name="WallBottomLeft" type="StaticBody2D" parent="Walls"]
+position = Vector2(-60, 2020)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottomLeft"]
+shape = SubResource("RectangleShape2D_dkv4p")
+metadata/_edit_lock_ = true
+
+[node name="WallBottomRight" type="StaticBody2D" parent="Walls"]
+position = Vector2(1140, 2020)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottomRight"]
+shape = SubResource("RectangleShape2D_yblq0")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(540, 960)
 texture = ExtResource("2_bddt1")
+
+[node name="ScoreManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_nf5vr")
+
+[node name="PlayerOneGoal" type="Area2D" parent="ScoreManager"]
+unique_name_in_owner = true
+position = Vector2(540, -195)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreManager/PlayerOneGoal"]
+position = Vector2(2, 0)
+scale = Vector2(1, 0.994084)
+shape = SubResource("RectangleShape2D_w0171")
+debug_color = Color(0.909298, 0.000110701, 0.733849, 0.42)
+
+[node name="PlayerTwoGoal" type="Area2D" parent="ScoreManager"]
+unique_name_in_owner = true
+position = Vector2(540, 2125)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreManager/PlayerTwoGoal"]
+position = Vector2(2, 0)
+scale = Vector2(1, 0.994084)
+shape = SubResource("RectangleShape2D_83p3w")
+debug_color = Color(0.909298, 0.000110701, 0.733849, 0.42)
+
+[node name="GoalLabel" type="Node2D" parent="ScoreManager"]
+unique_name_in_owner = true
+z_index = 10
+position = Vector2(1464, 980)
+
+[node name="GoalLabel" type="Label" parent="ScoreManager/GoalLabel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -103.5
+offset_right = 290.5
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 80
+theme_override_fonts/font = ExtResource("4_gm53h")
+theme_override_font_sizes/font_size = 150
+text = "Goal!!!"
+metadata/_edit_lock_ = true
+
+[node name="TweenPosStart" type="Node2D" parent="ScoreManager"]
+unique_name_in_owner = true
+position = Vector2(1494, 960)
+
+[node name="TweenPosMid" type="Node2D" parent="ScoreManager"]
+unique_name_in_owner = true
+position = Vector2(540, 960)
+
+[node name="TweenPosEnd" type="Node2D" parent="ScoreManager"]
+unique_name_in_owner = true
+position = Vector2(-475, 960)

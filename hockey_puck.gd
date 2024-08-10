@@ -10,10 +10,13 @@ var sync_position: Vector2
 
 var peer_id: int = 1
 
-func _ready():
+func reset():
     multiplayer_sync.set_multiplayer_authority(peer_id)
     velocity = -Vector2(randf(), randf())
     velocity = velocity.normalized() * IMPULSE_FORCE
+    
+func _ready():
+    reset()
 
 func _physics_process(delta):
     if not multiplayer_sync.get_multiplayer_authority() == multiplayer.get_unique_id():
