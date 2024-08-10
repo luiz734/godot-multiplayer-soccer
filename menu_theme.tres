@@ -1,13 +1,25 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c0hqrg8kwi7ps"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c0hqrg8kwi7ps"]
 
 [ext_resource type="FontFile" uid="uid://p42yca6ye8pg" path="res://fonts/fffforwad.ttf" id="1_t30o2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rysik"]
-bg_color = Color(1, 0.328029, 0.384277, 1)
+bg_color = Color(0.079125, 0.15, 0.0555, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hh87e"]
+bg_color = Color(0.42125, 0.5, 0.185, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbq1b"]
+bg_color = Color(0.15825, 0.3, 0.111, 1)
 
 [resource]
 default_font = ExtResource("1_t30o2")
 default_font_size = 100
 Button/styles/normal = SubResource("StyleBoxFlat_rysik")
 Label/font_sizes/font_size = 70
+LineEdit/colors/font_placeholder_color = Color(0.87451, 0.87451, 0.87451, 0.380392)
+LineEdit/colors/font_selected_color = Color(0.84, 0.84, 0.1596, 1)
+LineEdit/colors/selection_color = Color(0.501961, 0.501961, 0.501961, 0)
+LineEdit/constants/caret_width = 0
 LineEdit/font_sizes/font_size = 60
+LineEdit/styles/focus = SubResource("StyleBoxFlat_hh87e")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_tbq1b")
