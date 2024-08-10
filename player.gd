@@ -2,15 +2,21 @@ extends CharacterBody2D
 
 @export var speed = 1000
 @onready var multiplayer_sync = $MultiplayerSynchronizer
+@onready var sprite: Sprite2D = $Sprite2D
 
 var sync_position: Vector2
 
 var target_pos: Vector2
 var clicking := false
 
+var blue_texture = preload("res://assets/player_blue.png")
+var red_texture = preload("res://assets/player_red.png")
+
 func _ready():
     sync_position = position
-    multiplayer_sync.set_multiplayer_authority(name.to_int())
+    var peer_id:int = name.to_int()
+    multiplayer_sync.set_multiplayer_authority(peer_id)
+    sprite.texture = blue_texture if peer_id == 1 else red_texture
     target_pos = position
 
 func _input(event):

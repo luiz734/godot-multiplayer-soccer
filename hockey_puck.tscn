@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://eot72sdacig7"]
 
 [ext_resource type="Script" path="res://hockey_puck.gd" id="1_btja8"]
-[ext_resource type="Texture2D" uid="uid://djj3k7ryov4hn" path="res://icon.svg" id="2_w6db3"]
+[ext_resource type="Texture2D" uid="uid://c2mkyv24yvm7i" path="res://assets/ball.png" id="2_ob0nx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uyco"]
 radius = 60.1332
@@ -17,7 +17,8 @@ collision_mask = 5
 script = ExtResource("1_btja8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_w6db3")
+scale = Vector2(0.219879, 0.219879)
+texture = ExtResource("2_ob0nx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5uyco")

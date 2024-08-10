@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5y4fk8l38kc"]
 
-[ext_resource type="Texture2D" uid="uid://djj3k7ryov4hn" path="res://icon.svg" id="1_2mmo4"]
 [ext_resource type="Script" path="res://player.gd" id="2_7i4p6"]
+[ext_resource type="Texture2D" uid="uid://dj0u7kf3pjhg5" path="res://assets/player.png" id="2_bf8t3"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vkb4r"]
 properties/0/path = NodePath(".:sync_position")
@@ -19,8 +19,8 @@ script = ExtResource("2_7i4p6")
 replication_config = SubResource("SceneReplicationConfig_vkb4r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("1_2mmo4")
+scale = Vector2(0.752427, 0.752427)
+texture = ExtResource("2_bf8t3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_55pjf")
