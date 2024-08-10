@@ -5,12 +5,17 @@ extends CharacterBody2D
 var sync_position: Vector2
 var target_pos: Vector2
 var _clicking := false
+var _half_field: float
+var _half_sprite: float
+const EXTRA_ROOM = 50.0
 const BLUE_TEXTURE = preload("res://assets/player_blue.png")
 const RED_TEXTURE = preload("res://assets/player_red.png")
 @onready var multiplayer_sync = $MultiplayerSynchronizer
 @onready var sprite: Sprite2D = $Sprite2D
 
 func _ready():
+    _half_field = 1920.0 / 2.0
+    _half_sprite = sprite.get_rect().size.y / 2.0
     sync_position = position
     var peer_id:int = name.to_int()
     multiplayer_sync.set_multiplayer_authority(peer_id)
@@ -34,6 +39,13 @@ func get_input():
         target_pos = global_position
     
     position = target_pos
+    if is_host():
+        position.y = clamp(position.y, 0.0, _half_field - _half_sprite + EXTRA_ROOM)
+    else:
+        position.y = clamp(position.y, _half_field + _half_sprite - EXTRA_ROOM, _half_field * 3.0)
+
+func is_host():
+    return name == "1"
      
 
 func _physics_process(delta):
