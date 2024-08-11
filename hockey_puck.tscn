@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://eot72sdacig7"]
+[gd_scene load_steps=6 format=3 uid="uid://eot72sdacig7"]
 
 [ext_resource type="Script" path="res://hockey_puck.gd" id="1_btja8"]
+[ext_resource type="PackedScene" uid="uid://d12awr14ucy8o" path="res://trail.tscn" id="2_av6ek"]
 [ext_resource type="Texture2D" uid="uid://c2mkyv24yvm7i" path="res://assets/ball.png" id="2_ob0nx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uyco"]
@@ -16,6 +17,11 @@ collision_layer = 2
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_btja8")
+
+[node name="Trail" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_av6ek")]
+unique_name_in_owner = true
+visible = false
+target = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.219879, 0.219879)

@@ -9,9 +9,11 @@ var sync_position: Vector2
 var peer_id: int = 1
 
 @onready var multiplayer_sync = $MultiplayerSynchronizer
+@onready var trail: Trail = %Trail
 
 func _ready():
-    pass
+    # Fix fast movement instead of teleporting on start of game (not round)
+    sync_position = position
 
 func _physics_process(delta):
     if _is_authority():
@@ -28,6 +30,7 @@ func _is_authority() -> bool:
 
 @rpc("authority", "call_local", "reliable")
 func reset(pos: Vector2):
+    trail.visible = false
     sync_position = pos
     position = pos  
     #position = pos
@@ -39,6 +42,7 @@ func reset(pos: Vector2):
 @rpc("any_peer", "call_local", "unreliable")
 func apply_impulse(dir_norm: Vector2):
     velocity = dir_norm * IMPULSE_FORCE
+    trail.visible = true
     
 @rpc("authority", "call_local", "reliable")
 func force_set_position(pos: Vector2):
