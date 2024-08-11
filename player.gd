@@ -45,8 +45,7 @@ func get_input():
         position.y = clamp(position.y, _half_field + _half_sprite - EXTRA_ROOM, _half_field * 3.0)
 
 func is_host():
-    return name == "1"
-     
+    return name == "1"  
 
 func _physics_process(delta):
     if not multiplayer_sync.get_multiplayer_authority() == multiplayer.get_unique_id():

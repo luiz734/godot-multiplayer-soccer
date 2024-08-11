@@ -18,11 +18,6 @@ func _ready():
     randomize()
 
     if multiplayer.is_server():
-        score_manager.score.connect(func():
-            # After finished, returns the signal animation_finished bellow
-            # Use a wrapper because it's not possible call a rpc function here
-            animate_goal_wrapper()
-        )
         score_manager.animation_finished.connect(func():
             puck.reset.rpc(spawn_pos_puck.position)
         )
@@ -44,11 +39,3 @@ func reset_player_position(player: Node2D, player_id: int):
     else:
         player.position = spawn_pos_2.position
 
-func animate_goal_wrapper():
-    animate_goal.rpc()
-    #puck.force_set_position.rpc(spawn_pos_puck.position)
-    
-
-@rpc("authority", "call_local", "reliable") 
-func animate_goal():
-    score_manager.animate_goal()

@@ -72,3 +72,55 @@ position = Vector2(540, 960)
 [node name="TweenPosEnd" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-475, 960)
+
+[node name="ScoreP1" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 20
+position = Vector2(540, 480)
+
+[node name="Label" type="Label" parent="ScoreP1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -103.5
+offset_right = 290.5
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 80
+theme_override_fonts/font = ExtResource("2_abj01")
+theme_override_font_sizes/font_size = 150
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreP2" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 20
+position = Vector2(540, 1440)
+
+[node name="Label" type="Label" parent="ScoreP2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -103.5
+offset_right = 290.5
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 80
+theme_override_fonts/font = ExtResource("2_abj01")
+theme_override_font_sizes/font_size = 150
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
