@@ -63,5 +63,3 @@ func _physics_process(delta):
                 collider.apply_impulse(push_to_dir)
         #position += velocity * delta
         sync_position = position
-
-

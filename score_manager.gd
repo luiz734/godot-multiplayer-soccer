@@ -15,6 +15,7 @@ signal animation_finished
 @onready var score_p1: Node2D = %ScoreP1
 @onready var score_p2: Node2D = %ScoreP2
 
+
 func _ready():
     if multiplayer.is_server():
         player_one_goal.body_entered.connect(on_player_one_score)
@@ -56,4 +57,32 @@ func animate_goal():
     await tween2.finished
 
     goal_label.position = tween_start_pos.position
+    await show_score_animation()
     animation_finished.emit()
+    
+    
+func show_score_animation():
+    score_p1.visible = true
+    score_p2.visible = true
+    score_p1.scale = Vector2.ZERO
+    score_p2.scale = Vector2.ZERO
+    # Grow animation
+    var tween := get_tree().create_tween()
+    tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+    tween.tween_method(func(t):
+        score_p1.scale = t
+        score_p2.scale = t, 
+        Vector2.ZERO, Vector2.ONE, 2.0
+    )
+    await tween.finished
+    # Shrink animation
+    var tween1 := get_tree().create_tween()
+    tween1.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+    tween1.tween_method(func(t):
+        score_p1.scale = t
+        score_p2.scale = t, 
+        Vector2.ONE, Vector2.ZERO, 1.0
+    )
+    await tween1.finished    
+    score_p1.visible = false
+    score_p2.visible = false

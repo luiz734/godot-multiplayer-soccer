@@ -75,6 +75,7 @@ position = Vector2(-475, 960)
 
 [node name="ScoreP1" type="Node2D" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 20
 position = Vector2(540, 480)
 
@@ -101,6 +102,7 @@ vertical_alignment = 1
 
 [node name="ScoreP2" type="Node2D" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 20
 position = Vector2(540, 1440)
 
