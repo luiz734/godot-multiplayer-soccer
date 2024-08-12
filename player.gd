@@ -60,6 +60,6 @@ func _physics_process(delta):
                 var push_to_dir = (collider.global_position - global_position).normalized()
                 # collider.apply_impulse.rpc(push_to_dir)
                 collider.set_authority.rpc(name.to_int())
-                collider.apply_impulse(push_to_dir)
+                collider.apply_impulse.rpc(push_to_dir)
         #position += velocity * delta
         sync_position = position

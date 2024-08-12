@@ -46,12 +46,14 @@ func apply_impulse(dir_norm: Vector2):
     kick_player.play()
     velocity = dir_norm * IMPULSE_FORCE
     trail.visible = true
+    if multiplayer.is_server():
+        print_debug("visible now")
     
-@rpc("authority", "call_local", "reliable")
-func force_set_position(pos: Vector2):
-    sync_position = pos
-    position = pos    
-    velocity = Vector2.ZERO
+#@rpc("authority", "call_local", "reliable")
+#func force_set_position(pos: Vector2):
+    #sync_position = pos
+    #position = pos    
+    #velocity = Vector2.ZERO
 
 @rpc("any_peer", "call_local", "reliable")
 func set_authority(id: int):
