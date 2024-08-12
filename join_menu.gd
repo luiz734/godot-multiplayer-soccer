@@ -30,6 +30,7 @@ func start_game():
     
 @rpc("authority", "call_local", "reliable") 
 func enter_game():
+    await lobby.change_to_prematch()
     hide()
     get_tree().root.add_child(game_prefab.instantiate())
 
