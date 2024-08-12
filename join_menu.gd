@@ -70,8 +70,8 @@ func on_host_pressed():
     # (960, 1011)(960, 69)
     # (960, 1011)(0, 69)
     # Help debug 2 instances
-    get_window().size = Vector2i(960, 1011)
-    get_window().position = Vector2i(0, 69)
+    #get_window().size = Vector2i(960, 1011)
+    #get_window().position = Vector2i(0, 69)
 
     if not ip.text.is_valid_ip_address():
         error_overlay.show_error("Invalid IP address")
@@ -88,8 +88,8 @@ func on_host_pressed():
     wait_in_lobby()
 
 func on_join_pressed():
-    get_window().size = Vector2i(960, 1011)
-    get_window().position = Vector2i(960, 69)
+    #get_window().size = Vector2i(960, 1011)
+    #get_window().position = Vector2i(960, 69)
 
     if not ip.text.is_valid_ip_address():
         error_overlay.show_error("Invalid IP address")
