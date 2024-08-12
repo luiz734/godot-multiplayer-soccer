@@ -11,7 +11,7 @@ signal animation_finished
 @onready var tween_middle_pos: Node2D = %TweenPosMid
 @onready var tween_end_pos: Node2D = %TweenPosEnd
 @onready var goal_label: Node2D = %GoalLabel
-
+@onready var player_goal: AudioStreamPlayer = %PlayerGoal
 @onready var score_p1: Node2D = %ScoreP1
 @onready var score_p2: Node2D = %ScoreP2
 
@@ -34,6 +34,7 @@ func on_player_two_score(body):
 
 @rpc("authority", "call_local", "reliable") 
 func animate_goal():
+    player_goal.play()
     var p1_goals: int = -1
     var p2_goals: int = -1
     #if not multiplayer.is_server():

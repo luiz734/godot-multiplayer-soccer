@@ -10,6 +10,7 @@ extends Node2D
 
 @onready var win_size = get_window().size
 @onready var score_manager: ScoreManager = %ScoreManager
+@onready var whistle_player: AudioStreamPlayer = %WhistlePlayer
 
 var players = []
 var puck: HockeyPuck
@@ -20,6 +21,7 @@ func _ready():
     if multiplayer.is_server():
         score_manager.animation_finished.connect(func():
             puck.reset.rpc(spawn_pos_puck.position)
+            whistle_player.play()
         )
     for pid in Globals.players:
         var new_player = player_prefab.instantiate()

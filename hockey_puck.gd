@@ -10,6 +10,7 @@ var peer_id: int = 1
 
 @onready var multiplayer_sync = $MultiplayerSynchronizer
 @onready var trail: Trail = %Trail
+@onready var kick_player: AudioStreamPlayer = %KickPlayer
 
 func _ready():
     # Fix fast movement instead of teleporting on start of game (not round)
@@ -20,6 +21,7 @@ func _physics_process(delta):
         var collision := move_and_collide(velocity * delta)
         if collision:
             velocity = velocity.bounce(collision.get_normal())
+            kick_player.play()
         velocity = lerp(velocity, Vector2.ZERO, 0.01)
         sync_position = position
     else:
@@ -41,6 +43,7 @@ func reset(pos: Vector2):
     
 @rpc("any_peer", "call_local", "unreliable")
 func apply_impulse(dir_norm: Vector2):
+    kick_player.play()
     velocity = dir_norm * IMPULSE_FORCE
     trail.visible = true
     
