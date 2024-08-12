@@ -1,3 +1,5 @@
+![Game screenshots](screenshots/soccer-combined.png)
+
 # Multiplayer Soccer
 This is a simple, cross-platform multiplayer soccer game created using Godot 4.
 
