@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://cmdgeqsvqgd1"]
 
-[ext_resource type="Script" path="res://game.gd" id="1_mrbiw"]
+[ext_resource type="Script" path="res://src/game.gd" id="1_mrbiw"]
 [ext_resource type="Texture2D" uid="uid://ck732lg0rvfm7" path="res://assets/field.png" id="2_bddt1"]
-[ext_resource type="PackedScene" uid="uid://baj56k7w8ec1v" path="res://score_manager.tscn" id="3_dnhga"]
-[ext_resource type="AudioStream" uid="uid://bhvjts8x238sw" path="res://whistle.mp3" id="4_6rjal"]
+[ext_resource type="PackedScene" uid="uid://baj56k7w8ec1v" path="res://src/score_manager.tscn" id="3_dnhga"]
+[ext_resource type="AudioStream" uid="uid://bhvjts8x238sw" path="res://assets/whistle.mp3" id="4_1ngds"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itqn6"]
 size = Vector2(200, 2000)
@@ -105,4 +105,4 @@ unique_name_in_owner = true
 
 [node name="WhistlePlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("4_6rjal")
+stream = ExtResource("4_1ngds")

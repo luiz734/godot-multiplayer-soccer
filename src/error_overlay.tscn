@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://du2xnwwps1gya"]
 
-[ext_resource type="Script" path="res://error_overlay.gd" id="1_v5v4f"]
-[ext_resource type="Theme" uid="uid://c0hqrg8kwi7ps" path="res://menu_theme.tres" id="1_yygfq"]
+[ext_resource type="Script" path="res://src/error_overlay.gd" id="1_v5v4f"]
+[ext_resource type="Theme" uid="uid://c0hqrg8kwi7ps" path="res://src/resources/menu_theme.tres" id="1_yygfq"]
 
 [node name="ErrorOverlay" type="ColorRect"]
 anchors_preset = 15

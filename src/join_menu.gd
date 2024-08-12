@@ -1,6 +1,6 @@
 extends Control
 
-var game_prefab = preload("res://game.tscn")
+var game_prefab = preload("res://src/game.tscn")
 @onready var button_join: Button = %ButtonJoin
 @onready var button_host: Button = %ButtonHost
 @onready var ip: LineEdit = %IP

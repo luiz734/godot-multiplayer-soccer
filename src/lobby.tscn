@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://j2jw4a50kapn"]
 
-[ext_resource type="Theme" uid="uid://c0hqrg8kwi7ps" path="res://menu_theme.tres" id="1_2e2bs"]
-[ext_resource type="Script" path="res://lobby.gd" id="1_ypfqu"]
+[ext_resource type="Theme" uid="uid://c0hqrg8kwi7ps" path="res://src/resources/menu_theme.tres" id="1_2e2bs"]
+[ext_resource type="Script" path="res://src/lobby.gd" id="1_ypfqu"]
 
 [node name="Lobby" type="MarginContainer"]
 anchors_preset = 15

@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="multiplayer-soccer"
-run/main_scene="res://main.tscn"
+run/main_scene="res://src/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
 
 [autoload]
 
-Globals="*res://globals.gd"
+Globals="*res://src/autoloads/globals.gd"
 
 [display]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://eot72sdacig7"]
 
-[ext_resource type="Script" path="res://hockey_puck.gd" id="1_btja8"]
-[ext_resource type="PackedScene" uid="uid://d12awr14ucy8o" path="res://trail.tscn" id="2_av6ek"]
+[ext_resource type="Script" path="res://src/hockey_puck.gd" id="1_btja8"]
+[ext_resource type="PackedScene" uid="uid://d12awr14ucy8o" path="res://src/trail.tscn" id="2_av6ek"]
 [ext_resource type="Texture2D" uid="uid://c2mkyv24yvm7i" path="res://assets/ball.png" id="2_ob0nx"]
-[ext_resource type="AudioStream" uid="uid://dg8kj8pslg8kr" path="res://kick.mp3" id="4_ew0tx"]
+[ext_resource type="AudioStream" uid="uid://dg8kj8pslg8kr" path="res://assets/kick.mp3" id="4_b8od1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uyco"]
 radius = 60.1332
@@ -36,5 +36,5 @@ replication_config = SubResource("SceneReplicationConfig_j4p74")
 
 [node name="KickPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("4_ew0tx")
+stream = ExtResource("4_b8od1")
 volume_db = -13.951

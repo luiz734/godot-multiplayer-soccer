@@ -5,8 +5,8 @@ extends Node2D
 @onready var spawn_pos_2: Node2D = %Pos2
 @onready var spawn_pos_puck: Node2D = %PuckPos
 # Prefabs
-@onready var player_prefab: PackedScene = preload("res://player.tscn")
-@onready var hockey_puck_prefab: PackedScene = preload("res://hockey_puck.tscn")
+@onready var player_prefab: PackedScene = preload("res://src/player.tscn")
+@onready var hockey_puck_prefab: PackedScene = preload("res://src/hockey_puck.tscn")
 
 @onready var win_size = get_window().size
 @onready var score_manager: ScoreManager = %ScoreManager

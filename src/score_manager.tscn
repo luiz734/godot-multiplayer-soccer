@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://baj56k7w8ec1v"]
 
-[ext_resource type="Script" path="res://score_manager.gd" id="1_qtwww"]
+[ext_resource type="Script" path="res://src/score_manager.gd" id="1_qtwww"]
 [ext_resource type="FontFile" uid="uid://p42yca6ye8pg" path="res://fonts/fffforwad.ttf" id="2_abj01"]
-[ext_resource type="AudioStream" uid="uid://du56v61byd782" path="res://goal.mp3" id="3_77e38"]
+[ext_resource type="AudioStream" uid="uid://du56v61byd782" path="res://assets/goal.mp3" id="3_77e38"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0171"]
 size = Vector2(570, 200)
