@@ -14,3 +14,4 @@ You will find better learning resources on the internet.
 - The game doesn't support single-player mode.
 - Make sure the host creates the lobby before attempting to connect.
 - I've tested it on **Linux** and **Android**, but it should work on any platform supported by Godot.
+- **Tip**: you can run 2 instances on your PC to test on localhost.
